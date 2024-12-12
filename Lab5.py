@@ -62,7 +62,7 @@ class Ordenador:
                 j += 1
                 k += 1
 
-    def merge_sort(self, arr):
+    def ordenar_mergeSort(self, arr):
         n = len(self._A)
 
         if n <= 1:
@@ -72,8 +72,8 @@ class Ordenador:
         left_half = arr[:mid].copy()
         right_half = arr[mid:].copy()
 
-        left_half = self.merge_sort(left_half)  
-        right_half = self.merge_sort(right_half)  
+        left_half = self.ordenar_mergeSort(left_half)  
+        right_half = self.ordenar_mergeSort(right_half)  
 
         return self.merge(arr, left_half, right_half)
 
@@ -92,3 +92,27 @@ class Ordenador:
             return self.busqueda_binaria(self, A, x, mid+1, iR)
         else:
             return mid
+
+class Ordenador_Lista:
+    def __init__(self):
+        self._L= []
+
+    def inicializar(self, n):
+        for _ in range(n):
+            numero_aleatorio = random.randint(1, 100)
+            self._L.append(numero_aleatorio)
+
+    def mostrar(self):
+        print("Lista:", end = " " )
+        for elemento in self._L:
+            print(elemento, end= ", ")
+        print()
+
+    def ordenar(self):
+        n = len(self._L)
+        for i in range(n):
+            for j in range(0, n-i-1):
+                if self._L[j] > self._L[j+1]:
+                    self._L[j], self._L[j+1] = self._L[j+1], self._L[j]
+
+    
