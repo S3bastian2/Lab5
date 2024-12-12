@@ -39,36 +39,44 @@ class Ordenador:
             j -= 1
         self.__A[j] = temp
 
-    def Merge(self, p, q, r):
-     n1 = q - p + 1
-     n2 = r - q
-     L = [0] + n1
-     R = [0] + n2
-     for i in range(n1):
-        L[i] = self.__A[p +1]
-     for j in range(n2):
-        R[j] = self.__A[q + 1 + j] 
-     i = 0
-     j = 0
-     k = p
-     for k in range(p, r +1):
-        if L[i] <= R[j]:
-            self.__A[k] = L[i]
-            i += 1
-        else:
-            self.__A[k] = R[j]
-            j += 1
+    def merge(arr, left, right):
+ 
+        i = j = k = 0
 
-    def ordenar_mergeSort(self, p, r):
-     #p = self.__A[0]
-     #r = self.__A[-1]
-     print(p,r)
-     if p < r:
-        q = (p + r) // 2
-        print(q)
-        self.ordenar_mergeSort(self.__A, p, q)
-        self.ordenar_mergeSort(self.__A, q + 1, r)
-        self.Merge(self, p, q, r)
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+                k += 1
+
+            while i < len(left):
+                arr[k] = left[i]
+                i += 1
+                k += 1
+
+            while j < len(right):
+                arr[k] = right[j]
+                j += 1
+                k += 1
+
+    def merge_sort(self, arr):
+        n = len(self._A)
+
+        if n <= 1:
+            return arr 
+
+        mid = n // 2
+        left_half = arr[:mid].copy()
+        right_half = arr[mid:].copy()
+
+        left_half = self.merge_sort(left_half)  
+        right_half = self.merge_sort(right_half)  
+
+        return self.merge(arr, left_half, right_half)
+
 
     def mostrar(self):
      print ("Arreglo :", self.__A)
