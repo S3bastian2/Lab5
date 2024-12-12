@@ -1,5 +1,6 @@
 import random 
-
+from listaDoble import ListaDoble
+from Usuario import *
 #Clase ordenador
 
 class Ordenador:
@@ -13,14 +14,14 @@ class Ordenador:
       self.__A = A
       
 
-    def ordenar_burbuja(self):
+    def ordenar_burbuja(self, n):
       n = self.__limit
       for i in range(n):
         for j in range( 1, n-i):
             if self.__A[j-1] > self.__A[j]:
                 self.__A[j-1], self.__A[j] = self.__A[j], self.__A[j-1]
 
-    def ordenar_seleccion(self):
+    def ordenar_seleccion(self, n):
        n = self.__limit
        for i in range(n): 
         minIndex = i 
@@ -29,7 +30,7 @@ class Ordenador:
                 minIndex = j  
         self.__A[i], self.__A[minIndex] = self.__A[minIndex], self.__A[i]
 
-    def ordenar_insercion(self):
+    def ordenar_insercion(self, n):
      n = self.__limit
      for i in range(1, n):
         temp = self.__A[i]
@@ -114,5 +115,43 @@ class Ordenador_Lista:
             for j in range(0, n-i-1):
                 if self._L[j] > self._L[j+1]:
                     self._L[j], self._L[j+1] = self._L[j+1], self._L[j]
+    
+class ordenador_agenda():
+    def __init__(self, L = None):
+       
+        if L is not None:
+            self.__L = L 
+        else:
+            L = ListaDoble(None, None, 0)
+        
+    
+    def ordenador_agenda(self):
+        self.__init__(L = None)
+    
+    def agregarUsuario(self, u):
+       self.__L.addLast(u)
+    
+    def ordenar(self):
+        Usulist = []
+        for i in range(len(self.__L)):
+           if self.__L.__head == None:
+              return False
+           else:
+              if self.__L.size!= 0:
+                temp = self.__L.removeLast()
+                Usulist.append(temp.getId())
+        #burvbuja 
+        n = len(Usulist)
+        for i in range(n):
+            for j in range( 1, n-i):
+             if Usulist[j-1] > Usulist[j]:
+                Usulist[j-1], Usulist[j] = Usulist[j], Usulist[j-1]
+        print(Usulist)
+
+      
+        
+            
+        
+              
 
     
