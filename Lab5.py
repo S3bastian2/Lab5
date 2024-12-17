@@ -117,22 +117,25 @@ class Ordenador_Lista:
                     self._L[j], self._L[j+1] = self._L[j+1], self._L[j]
     
 class ordenador_agenda():
+    def __init__(self, L = ListaDoble(None, None, 0)):
+       self.L = L
     
     def ordenador_Agenda(self):
-       self.__L = ListaDoble(None, None, 0)
+       self.L = ListaDoble(None, None, 0)
     
     def agregarUsuario(self, u):
-       self.__L.addLast(u)
+       self.L.addLast(u)
     
     def ordenar(self):
         final = None
-        while final != self.__L.first():
-           nodo = self.__L.first()
+        while final != self.L.first():
+           nodo = self.L.first()
            while nodo.getNext() != final:
                siguiente = nodo.getNext()
-               if nodo.__data.__id > siguiente.__data.__id:
-                   nodo.__data, siguiente.__data = siguiente.__data, nodo.__data
-               nodo = nodo.getNext()
+               if isinstance(nodo.getData(), Usuario) and isinstance(siguiente., Usuario):
+                if nodo.getId() > siguiente.getId():
+                    nodo.get, siguiente.__data = siguiente.__data, nodo.__data
+                nodo = nodo.getNext()
            final = nodo
     
     def mostrar(self):
