@@ -117,36 +117,33 @@ class Ordenador_Lista:
                     self._L[j], self._L[j+1] = self._L[j+1], self._L[j]
     
 class ordenador_agenda():
-    def __init__(self, L = None):
-       
-        if L is not None:
-            self.__L = L 
-        else:
-            L = ListaDoble(None, None, 0)
-        
     
-    def ordenador_agenda(self):
-        self.__init__(L = None)
+    def ordenador_Agenda(self):
+       self.__L = ListaDoble(None, None, 0)
     
     def agregarUsuario(self, u):
        self.__L.addLast(u)
     
     def ordenar(self):
-        Usulist = []
-        for i in range(len(self.__L)):
-           if self.__L.__head == None:
-              return False
-           else:
-              if self.__L.size!= 0:
-                temp = self.__L.removeLast()
-                Usulist.append(temp.getId())
-        #burvbuja 
-        n = len(Usulist)
-        for i in range(n):
-            for j in range( 1, n-i):
-             if Usulist[j-1] > Usulist[j]:
-                Usulist[j-1], Usulist[j] = Usulist[j], Usulist[j-1]
-        print(Usulist)
+        final = None
+        while final != self.__L.first():
+           nodo = self.__L.first()
+           while nodo.getNext() != final:
+               siguiente = nodo.getNext()
+               if nodo.__data.__id > siguiente.__data.__id:
+                   nodo.__data, siguiente.__data = siguiente.__data, nodo.__data
+               nodo = nodo.getNext()
+           final = nodo
+    
+    def mostrar(self):
+       temp = self.__L.first()
+       while temp:
+          info = temp.__data
+          print(f"Cedula: {info.__id}, Nombre: {info.__nombre}, Fecha Nacimiento: {info.__fechaNacimiento}, ciudad de nacimiento: {info.__ciudadNacimiento}, telefono: {info.__telefono}, email: {info.__email}, direccion: {info.__dir} ")
+          temp = temp.getNext()
+
+                    
+
 
       
         
