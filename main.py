@@ -46,13 +46,13 @@ u6.setFechaNacimiento(f6)
 u6.setDir(d6)
 
 
-lista_Usuarios = [u6, u3, u5, u4, u2, u1]
+lista_Usuarios = [u6, u4, u5, u3, u2, u1]
 #Usuarios = ordenador_agenda(k)
 #Usuarios.ordenar()
 #print(Usuarios)
 
 o = ordenador_agenda()
 for usuario in range(len(lista_Usuarios)):
-    o.agregarUsuario(usuario)
+    o.agregarUsuario(lista_Usuarios[usuario])
 o.ordenar()
 o.mostrar()

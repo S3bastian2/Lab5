@@ -117,41 +117,33 @@ class Ordenador_Lista:
                     self._L[j], self._L[j+1] = self._L[j+1], self._L[j]
     
 class ordenador_agenda():
-    def __init__(self, L = ListaDoble(None, None, 0)):
-       self.L = L
+    def __init__(self):
+       self.L = ListaDoble()
     
     def ordenador_Agenda(self):
-       self.L = ListaDoble(None, None, 0)
+       self.__init__()
     
     def agregarUsuario(self, u):
        self.L.addLast(u)
-    
+
     def ordenar(self):
         final = None
         while final != self.L.first():
-           nodo = self.L.first()
-           while nodo.getNext() != final:
-               siguiente = nodo.getNext()
-               if isinstance(nodo.getData(), Usuario) and isinstance(siguiente., Usuario):
-                if nodo.getId() > siguiente.getId():
-                    nodo.get, siguiente.__data = siguiente.__data, nodo.__data
+            nodo = self.L.first()
+            while nodo.getNext() != final:
+                siguiente = nodo.getNext()
+                if nodo.getData().getId() > siguiente.getData().getId():
+                   temp = nodo.getData()
+                   temp1 = siguiente.getData()
+                   nodo.setData(temp1)
+                   siguiente.setData(temp)
+                   
                 nodo = nodo.getNext()
-           final = nodo
-    
+            final = nodo
+
     def mostrar(self):
-       temp = self.__L.first()
+       temp = self.L.first()
        while temp:
-          info = temp.__data
-          print(f"Cedula: {info.__id}, Nombre: {info.__nombre}, Fecha Nacimiento: {info.__fechaNacimiento}, ciudad de nacimiento: {info.__ciudadNacimiento}, telefono: {info.__telefono}, email: {info.__email}, direccion: {info.__dir} ")
+          info = temp.getData()
+          print(f"Cedula: {info.getId()}, Nombre: {info.getNombre()}, Fecha Nacimiento: {info.getFechaNacimiento()}, ciudad de nacimiento: {info.getCiudadNacimiento()}, telefono: {info.getTelefono()}, email: {info.getEmail()}, direccion: {info.getDir()} ")
           temp = temp.getNext()
-
-                    
-
-
-      
-        
-            
-        
-              
-
-    

@@ -1,13 +1,13 @@
 from nodoDoble import nodoDoble
 
 class ListaDoble():
-    def __init__(self,head, tail, size):
-        self.__head = head
-        self.__tail = tail
-        self.__size = size
+    def __init__(self):
+        self.__head = None
+        self.__tail = None
+        self.__size = 0
         
-    def DoubleList(self):
-        self.__init__(None, None, 0)
+    def ListaDoble(self):
+        self.__init__()
         
     def size(self):
         return self.__size
